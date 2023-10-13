@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "db:dev": "pscale connect moody-ai dev --port 3303",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"

@@ -44,7 +44,7 @@ DATABASE_URL= 'mysql://root:@localhost:3303/{nameOfDB}'
 4. Connect to PlanetScale : `pscale auth login`
 5. Switch to your organisation : `pscale org switch {organisation}`
 6. Connect to the Database : `pscale connect {nameOfDB} {Branche} --port 3303`
-7. On a new terminal, start your dev env : `pnpm run dev`
+7. On a new terminal, start your dev env : `pnpm dev`
 8. open your project on: `http://localhost:3000`
 
 # 👨🏽‍💻 Contributions :
