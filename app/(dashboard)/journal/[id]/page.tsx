@@ -1,8 +1,5 @@
 import { getUserByClerkId } from '@/utils/auth';
 
-import { EntryCard } from '@/components/modules/EntryCard';
-import { NewEntryCard } from '@/components/modules/NewEntryCard';
-
 const getEntries = async () => {
   const user = await getUserByClerkId();
   const entries = user.entries;

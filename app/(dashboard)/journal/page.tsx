@@ -1,7 +1,8 @@
 import { getUserByClerkId } from '@/utils/auth';
 
-import { EntryCard } from '@/components/modules/EntryCard';
+import EntryCard from '@/components/modules/EntryCard';
 import { NewEntryCard } from '@/components/modules/NewEntryCard';
+import Link from 'next/link';
 
 const getEntries = async () => {
   const user = await getUserByClerkId();
@@ -18,7 +19,9 @@ const Journal = async () => {
       <div className="gap- grid grid-cols-3 p-8">
         <NewEntryCard />
         {entries.map(entry => (
-          <EntryCard key={entry.id} entry={entry} />
+          <Link key={entry.id} href={`/journal/${entry.id}`}>
+            <EntryCard entry={entry} />
+          </Link>
         ))}
       </div>
     </div>
