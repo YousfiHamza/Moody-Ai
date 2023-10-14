@@ -15,12 +15,12 @@ export const NewEntryCard = () => {
   };
 
   return (
-    <div className="cursor-pointer overflow-hidden rounded-lg bg-white shadow">
+    <div
+      className="cursor-pointer overflow-hidden rounded-lg bg-white shadow"
+      onClick={handleNewEntry}
+    >
       <div className="relative px-4 py-5 sm:p-6">
-        <span className="rotate-1 text-3xl" onClick={handleNewEntry}>
-          {' '}
-          + New Entry
-        </span>
+        <span className="rotate-1 text-3xl"> + New Entry</span>
         {loading && <div></div>}
       </div>
     </div>
