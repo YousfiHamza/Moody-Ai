@@ -6,7 +6,6 @@ import { useState } from 'react';
 
 export const NewEntryCard = () => {
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
 
   const handleNewEntry = async () => {
     const data = await createNewEntry();
@@ -21,7 +20,6 @@ export const NewEntryCard = () => {
     >
       <div className="relative px-4 py-5 sm:p-6">
         <span className="rotate-1 text-3xl"> + New Entry</span>
-        {loading && <div></div>}
       </div>
     </div>
   );
