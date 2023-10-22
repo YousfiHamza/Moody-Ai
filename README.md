@@ -10,6 +10,7 @@
 - Secure Authentication with `Clerk`
 - MySQL Database with `PlanetScale`
 - Next-Gen ORM with `Prisma`
+- AI features with `langchain` & `OpenAi`
 
 # 🚀 Getting started :
 
