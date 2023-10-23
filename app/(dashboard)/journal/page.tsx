@@ -9,7 +9,9 @@ const getEntries = async () => {
   const user = await getUserByClerkId();
   const entries = user.entries;
 
-  await analyze('wait a minute ... who are you !?');
+  await analyze(
+    "i think today was okeay, i've found a nice and calm coffe shop but their products are expensive!",
+  );
   return entries;
 };
 
