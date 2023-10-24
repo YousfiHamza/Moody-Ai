@@ -40,7 +40,5 @@ export const PATCH = async (
 
   const data = { ...updateEntry, analysis: savedAnalysis };
 
-  console.log('DATA : ', data);
-
   return NextResponse.json({ data });
 };

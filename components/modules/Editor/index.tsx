@@ -57,22 +57,22 @@ export const Editor = ({ entry }: EditorProps) => {
   ];
 
   return (
-    <div className="relative grid h-full w-full grid-cols-3 gap-0">
-      <div className="absolute left-0 top-0 p-2">
-        {isSaving ? (
-          <Spinner />
-        ) : (
-          <div className="h-[16px] w-[16px] rounded-full bg-green-500"></div>
-        )}
-      </div>
-      <div className="col-span-2">
+    <div className="relative grid h-full w-full grid-cols-3 gap-4">
+      <div className="relative col-span-2">
+        <div className="absolute left-0 top-0 p-2">
+          {isSaving ? (
+            <Spinner />
+          ) : (
+            <div className="h-[16px] w-[16px] rounded-full bg-green-500"></div>
+          )}
+        </div>
         <textarea
           value={text}
           onChange={e => setText(e.target.value)}
           className="h-full w-full p-8 text-xl"
         />
       </div>
-      <div className="border-l border-black/10">
+      <div className="col-span-1 overflow-hidden rounded-lg border-l border-black/10">
         <div
           className="px-6 py-10"
           style={{ background: color ? color : '#000' }}
