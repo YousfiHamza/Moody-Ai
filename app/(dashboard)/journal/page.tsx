@@ -4,15 +4,20 @@ import EntryCard from '@/components/modules/EntryCard';
 import { NewEntryCard } from '@/components/modules/NewEntryCard';
 import Link from 'next/link';
 import { analyze } from '@/utils/ai';
+import { prisma } from '@/utils/db';
 
 const getEntries = async () => {
   const user = await getUserByClerkId();
-  const entries = user.entries;
+  const entries = await prisma.journalEntry.findMany({
+    where: {
+      userId: user.id,
+    },
+    orderBy: {
+      createdAt: 'desc',
+    },
+  });
 
-  await analyze(
-    "i think today was okeay, i've found a nice and calm coffe shop but their products are expensive!",
-  );
-  return entries;
+  return entries || [];
 };
 
 const Journal = async () => {

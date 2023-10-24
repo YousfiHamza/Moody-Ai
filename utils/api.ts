@@ -15,12 +15,14 @@ export const createNewEntry = async () => {
 };
 
 export const updateEntry = async (id: number, content: string) => {
+  console.log('content : ', content);
   const res = await fetch(
     new Request(getURL(`/api/journal/${id}`), {
       method: 'PATCH',
       body: JSON.stringify({ content }),
     }),
   );
+
   if (res.ok) {
     const { data } = await res.json();
     return data;
