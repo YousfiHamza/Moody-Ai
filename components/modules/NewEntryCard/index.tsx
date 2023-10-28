@@ -10,7 +10,6 @@ export const NewEntryCard = () => {
   const handleNewEntry = async () => {
     const data = await createNewEntry();
     router.push(`/journal/${data.id}`);
-    console.log('data : ', data);
   };
 
   return (

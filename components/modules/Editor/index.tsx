@@ -13,8 +13,6 @@ export const Editor = ({ entry }: EditorProps) => {
   const [analysis, setAnalysis] = useState(entry.analysis);
   const [isSaving, setIsSaving] = useState(false);
 
-  console.log('entry : ', entry);
-
   useAutosave({
     data: text,
     onSave: async _text => {
@@ -22,7 +20,7 @@ export const Editor = ({ entry }: EditorProps) => {
       setIsSaving(true);
 
       const data = await updateEntry(entry.id, _text);
-      console.log('data : ', data);
+      
       setAnalysis(data.analysis);
       setEntry(data);
       setIsSaving(false);

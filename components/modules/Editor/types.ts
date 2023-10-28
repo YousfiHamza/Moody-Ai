@@ -1,5 +1,7 @@
-import { EntryProps } from '../EntryCard/types';
+import { JournalEntry, Analysis } from '@prisma/client';
 
 export type EditorProps = {
-  entry: EntryProps;
+  entry: JournalEntry & {
+    analysis: Analysis | null;
+  };
 };

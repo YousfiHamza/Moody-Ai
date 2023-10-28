@@ -4,8 +4,6 @@ import { auth } from '@clerk/nextjs'
 export default async function Home() {
   const { userId } = auth()
 
-  console.log('userId : ', userId)
-
   const href = userId ? '/journal' : '/new-user'
 
   return (

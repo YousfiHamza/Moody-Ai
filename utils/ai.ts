@@ -1,7 +1,17 @@
 import { OpenAI } from 'langchain/llms/openai';
 import { StructuredOutputParser } from 'langchain/output_parsers';
 import { PromptTemplate } from 'langchain/prompts';
+import { Document } from 'langchain/document';
 import { z } from 'zod';
+import { loadQAChain } from 'langchain/chains';
+import { OpenAIEmbeddings } from 'langchain/embeddings/openai';
+import { MemoryVectorStore } from 'langchain/vectorstores/memory';
+
+export type QAEntryType = {
+  id: number;
+  createdAt: Date;
+  content: string;
+};
 
 const parser = StructuredOutputParser.fromZodSchema(
   z.object({
@@ -56,4 +66,34 @@ export const analyze = async (prompt: string) => {
     console.log(e);
     return null;
   }
+};
+
+export const qa = async (question: string, entries: QAEntryType[]) => {
+  const docs = entries.map(
+    entry =>
+      new Document({
+        pageContent: entry.content,
+        metadata: {
+          id: entry.id,
+          createdAt: entry.createdAt,
+        },
+      }),
+  );
+
+  const model = new OpenAI({ temperature: 0, modelName: 'gpt-3.5-turbo' });
+
+  const chain = loadQAChain(model);
+
+  const embeddings = new OpenAIEmbeddings(); // OpenAI embeddings
+
+  const store = await MemoryVectorStore.fromDocuments(docs, embeddings); // vectors store
+
+  const relevantDocs = await store.similaritySearch(question); // relevant questions close to the one asked according to the vectors store that's based on OPENAI embeddings
+
+  const res = await chain.call({
+    input_documents: relevantDocs,
+    question,
+  });
+
+  return res.text;
 };

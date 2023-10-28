@@ -1,5 +1,6 @@
 'use client';
 
+import { askQuestion } from '@/utils/api';
 import { useState } from 'react';
 
 const Question = () => {
@@ -11,7 +12,11 @@ const Question = () => {
     event.preventDefault();
     setLoading(true);
 
-    // perform actions
+    const question = event.currentTarget.question.value;
+
+    const { data } = await askQuestion(question);
+
+    setAnswer(data);
 
     setLoading(false);
     setQuestion('');
@@ -19,12 +24,13 @@ const Question = () => {
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="flex items-center">
         <input
           type="text"
+          name="question"
           value={question}
           onChange={e => setQuestion(e.target.value)}
-          className="rounded-md border border-gray-300 p-2 text-lg"
+          className="mr-2 rounded-md border border-gray-300 p-2 text-lg"
           disabled={loading}
           placeholder="Ask a question..."
         />
