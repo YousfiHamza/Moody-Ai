@@ -10,7 +10,8 @@
 - Secure Authentication with `Clerk`
 - MySQL Database with `PlanetScale`
 - Next-Gen ORM with `Prisma`
-- AI features with `langchain` & `OpenAi`
+- AI features with `Langchain` & `OpenAi`
+- Plot the Mood Sentiment-Scores with `Recharts`
 
 # 🚀 Getting started :
 
@@ -44,7 +45,7 @@ DATABASE_URL= 'mysql://root:@localhost:3303/{nameOfDB}'
 3. Install PlanetScale-CLI locally.
 4. Connect to PlanetScale : `pscale auth login`
 5. Switch to your organisation : `pscale org switch {organisation}`
-6. Connect to the Database : `pscale connect {nameOfDB} {Branche} --port 3303`
+6. Connect to the Database : `pscale connect {nameOfDB} {Branche} --port 3303` Or Simply `pnpm run db:dev`
 7. On a new terminal, start your dev env : `pnpm dev`
 8. open your project on: `http://localhost:3000`
 
