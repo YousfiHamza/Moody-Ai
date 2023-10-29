@@ -11,7 +11,8 @@
 - MySQL Database with `PlanetScale`
 - Next-Gen ORM with `Prisma`
 - AI features with `Langchain` & `OpenAi`
-- Plot the Mood Sentiment-Scores with `Recharts`
+- Plot the mood Sentiment-Scores with `Recharts`
+- Testing components with `Vitest`
 
 # 🚀 Getting started :
 
