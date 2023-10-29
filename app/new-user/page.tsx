@@ -4,19 +4,22 @@ import { redirect } from 'next/navigation';
 
 const createUser = async () => {
   const user = await currentUser();
+
   const match = await prisma.user.findUnique({
     where: {
       clerkId: user?.id as string,
     },
   });
-  if (!match) {
-    const myUser = await prisma.user.create({
+
+  if (!match && user) {
+    await prisma.user.create({
       data: {
-        email: user?.emailAddresses[0].emailAddress as string,
-        clerkId: user?.id as string,
+        email: user.emailAddresses[0].emailAddress,
+        clerkId: user.id,
       },
     });
   }
+
   redirect('/journal');
 };
 
