@@ -42,7 +42,7 @@ const Question = () => {
           Ask
         </button>
       </form>
-      {loading && <p>Loading...</p>}
+      {loading && <p className="py-2 font-semibold">Loading...</p>}
       {answer && <p className="my-4 text-xl">{answer}</p>}
     </div>
   );

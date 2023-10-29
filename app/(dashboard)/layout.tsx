@@ -37,7 +37,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       <div className="ml-[200px] h-full">
         <header className="h-[60px] border-b border-black/10">
           <div className="flex h-full w-full items-center justify-end px-6">
-            <UserButton />
+            <UserButton afterSignOutUrl="/" />
           </div>
         </header>
         <main className="h-[calc(100%-60px)]">{children}</main>
